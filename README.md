@@ -46,3 +46,9 @@ module.exports = {
     ```
     
 2. Just run `npm run mock`.
+
+--
+
+## Roadmap
+
+- Refactor into Typescript
