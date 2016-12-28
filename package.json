@@ -1,0 +1,23 @@
+{
+  "name": "mockit-sw",
+  "version": "0.1.0",
+  "description": "Mock server in your browser.",
+  "bin": {
+    "mockit": "./bin/mockit.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devxleo/mockit.git"
+  },
+  "keywords": [],
+  "author": "devxleo <devxleo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devxleo/mockit/issues"
+  },
+  "homepage": "https://github.com/devxleo/mockit#readme",
+  "dependencies": {
+    "path-to-regexp": "^1.7.0",
+    "webpack": "^2.2.0-rc.2"
+  }
+}
