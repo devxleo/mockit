@@ -1,5 +1,7 @@
 'use strict';
 
+const uuidV4 = require('uuid/v4');
+
 function A(schema) {
   if (!schema) return {};
   switch (schema.type) {
@@ -31,11 +33,24 @@ function A(schema) {
 }
 
 function mockString(schema) {
-  return 'this is a string';
+  switch (schema.format) {
+    case 'url':
+      return 'http://www.chocyt.com';
+    case 'uuid':
+      return uuidV4();
+    case 'username':
+      return 'devxleo';
+    case 'email':
+      return 'devxleo@gmail.com'
+    default:
+      return 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
+  }
 }
 
 function mockInteger(schema) {
-  return 42;
+  const min = schema.min || 0;
+  const max = schema.max || 1;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function mockNumber(schema) {
