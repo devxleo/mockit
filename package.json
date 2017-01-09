@@ -1,6 +1,6 @@
 {
   "name": "mockit-sw",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mock server in your browser.",
   "bin": {
     "mockit": "./bin/mockit.js"
