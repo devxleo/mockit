@@ -20,7 +20,7 @@ self.addEventListener('fetch', function (event) {
     const re = router.match(method, path);
     if (re) {
       const resp = new Response(
-        JSON.stringify(handler(re.schema, re.query)),
+        JSON.stringify(handler(re.schema, re.context)),
         {
           headers: {
             'Content-Type': 'application/json'

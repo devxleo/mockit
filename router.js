@@ -41,7 +41,7 @@ class Router {
       return true;
     });
     
-    return isMatch ? {schema: schema, query: queryToMatch} : null;
+    return isMatch ? {schema: schema, context: { query: queryToMatch } } : null;
   }
   
 }
