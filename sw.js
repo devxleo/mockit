@@ -17,10 +17,10 @@ self.addEventListener('fetch', function (event) {
   const method = event.request.method;
   const path = getPath(event.request.url);
   if (path) {
-    const schema = router.match(method, path);
-    if (schema) {
+    const re = router.match(method, path);
+    if (re) {
       const resp = new Response(
-        JSON.stringify(handler(schema)),
+        JSON.stringify(handler(re.schema, re.query)),
         {
           headers: {
             'Content-Type': 'application/json'

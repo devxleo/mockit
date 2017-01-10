@@ -32,15 +32,16 @@ class Router {
     
     const [path, query] = splitPath(url);
     let schema = null;
+    let queryToMatch = null;
     const isMatch = arr.some((route) => {
       if (!route.path.test(path)) return false;
-      const queryToMatch = query ? qs.parse(query) : null;
+      queryToMatch = query ? qs.parse(query) : null;
       if (!testQuery(route.query, queryToMatch)) return false;
       schema = route.schema;
       return true;
     });
     
-    return isMatch ? schema : null;
+    return isMatch ? {schema: schema, query: queryToMatch} : null;
   }
   
 }

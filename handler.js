@@ -2,29 +2,30 @@
 
 const uuidV4 = require('uuid/v4');
 
-function A(schema) {
+function A(schema, query) {
   if (!schema) return {};
   switch (schema.type) {
     case 'string':
-      return mockString(schema);
+      return mockString(schema, query);
     case 'integer':
-      return mockInteger(schema);
+      return mockInteger(schema, query);
     case 'number':
-      return mockNumber(schema);
+      return mockNumber(schema, query);
     case 'boolean':
-      return mockBoolean(schema);
+      return mockBoolean(schema, query);
     case 'null':
-      return mockNull(schema);
+      return mockNull(schema, query);
     case 'array':
       let r = [];
-      for (let i = 0; i < schema.length; i++) {
-        r.push(A(schema.items));
+      const len = (typeof schema.length === 'function') ? schema.length(query) : schema.length;
+      for (let i = 0; i < len; i++) {
+        r.push(A(schema.items, query));
       }
       return r;
     case 'object':
       let obj = {};
       Object.keys(schema.properties).forEach((key) => {
-        obj[key] = A(schema.properties[key]);
+        obj[key] = A(schema.properties[key], query);
       });
       return obj;
     default:
