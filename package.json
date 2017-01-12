@@ -19,6 +19,6 @@
   "dependencies": {
     "path-to-regexp": "^1.7.0",
     "uuid": "^3.0.1",
-    "webpack": "^2.2.0-rc.2"
+    "webpack": "^1.14.0"
   }
 }
